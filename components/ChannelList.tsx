@@ -1,5 +1,5 @@
 import React from 'react';
-import { View, Text, StyleSheet, ScrollView } from 'react-native';
+import { View, Text, StyleSheet, ScrollView, TouchableOpacity } from 'react-native';
 import { Card, CardHeader, CardTitle, CardDescription, CardContent } from './ui/Card';
 import { Button } from './ui/Button';
 import { Badge } from './ui/Badge';
@@ -29,11 +29,9 @@ export const ChannelList: React.FC<ChannelListProps> = ({
           contentContainerStyle={styles.channelsList}
         >
           {channels.map((channel) => (
-            <Button
+            <TouchableOpacity
               key={channel.id}
-              title=""
               onPress={() => onChannelSelect(channel)}
-              variant={activeChannel.id === channel.id ? 'default' : 'ghost'}
               style={[
                 styles.channelButton,
                 activeChannel.id === channel.id && styles.activeChannel,
@@ -54,7 +52,7 @@ export const ChannelList: React.FC<ChannelListProps> = ({
                 </Badge>
                 <Text style={styles.studentCount}>{channel.students} students</Text>
               </View>
-            </Button>
+            </TouchableOpacity>
           ))}
         </ScrollView>
       </CardContent>

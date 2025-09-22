@@ -1,17 +1,16 @@
 import React, { useState, useMemo } from 'react';
-import { View, Text, StyleSheet, ScrollView, SafeAreaView, StatusBar, Dimensions } from 'react-native';
+import { View, Text, StyleSheet, ScrollView, SafeAreaView, StatusBar, TouchableOpacity } from 'react-native';
 import { ChannelList } from '../components/ChannelList';
 import { SearchBar } from '../components/SearchBar';
 import { ThreadCard } from '../components/ThreadCard';
 import { ThreadRow } from '../components/ThreadRow';
 import { ThreadDetailModal } from '../components/ThreadDetailModal';
+import { ChannelSelectionScreen } from './ChannelSelectionScreen';
 import { Button } from '../components/ui/Button';
 import { Card, CardHeader, CardTitle, CardContent } from '../components/ui/Card';
 import { Ionicons } from '@expo/vector-icons';
 import { CHANNELS, THREADS, THREAD_DETAILS } from '../data/mockData';
 import { Channel, ThreadDetail } from '../types';
-
-const { width } = Dimensions.get('window');
 
 export default function HomeScreen() {
   // State
@@ -19,6 +18,7 @@ export default function HomeScreen() {
   const [searchQuery, setSearchQuery] = useState('');
   const [selectedThread, setSelectedThread] = useState<ThreadDetail | null>(null);
   const [isModalVisible, setIsModalVisible] = useState(false);
+  const [showChannelSelection, setShowChannelSelection] = useState(false);
 
   // Get current channel threads
   const threads = THREADS[activeChannel.id] || { pinned: [], recent: [] };
@@ -37,6 +37,7 @@ export default function HomeScreen() {
   const handleChannelSelect = (channel: Channel) => {
     setActiveChannel(channel);
     setSearchQuery('');
+    setShowChannelSelection(false);
   };
 
   const handleThreadPress = (threadId: string) => {
@@ -74,6 +75,25 @@ export default function HomeScreen() {
     setIsModalVisible(true);
   };
 
+  const handleShowChannelSelection = () => {
+    setShowChannelSelection(true);
+  };
+
+  const handleBackFromChannelSelection = () => {
+    setShowChannelSelection(false);
+  };
+
+  if (showChannelSelection) {
+    return (
+      <ChannelSelectionScreen
+        channels={CHANNELS}
+        activeChannel={activeChannel}
+        onChannelSelect={handleChannelSelect}
+        onBack={handleBackFromChannelSelection}
+      />
+    );
+  }
+
   return (
     <SafeAreaView style={styles.container}>
       <StatusBar barStyle="dark-content" backgroundColor="#f9fafb" />
@@ -90,22 +110,40 @@ export default function HomeScreen() {
               <Text style={styles.appSubtitle}>Tutor view</Text>
             </View>
           </View>
-          <Button
-            title="Sample"
-            onPress={handleOpenSampleThread}
-            size="sm"
-          />
+          <View style={styles.headerButtons}>
+            <Button
+              title="Sample"
+              onPress={handleOpenSampleThread}
+              size="sm"
+              style={styles.sampleButton}
+            />
+          </View>
         </View>
       </View>
 
       <ScrollView style={styles.content} showsVerticalScrollIndicator={false}>
         {/* Channel Selection */}
         <View style={styles.section}>
-          <ChannelList
-            channels={CHANNELS}
-            activeChannel={activeChannel}
-            onChannelSelect={handleChannelSelect}
-          />
+          <TouchableOpacity onPress={handleShowChannelSelection}>
+            <Card style={styles.currentChannelCard}>
+              <CardContent>
+                <View style={styles.currentChannelContent}>
+                  <View style={styles.currentChannelInfo}>
+                    <View style={styles.currentChannelIcon}>
+                      <Text style={styles.currentChannelIconText}>
+                        {activeChannel.subject.charAt(0).toUpperCase()}
+                      </Text>
+                    </View>
+                    <View style={styles.currentChannelDetails}>
+                      <Text style={styles.currentChannelName}>{activeChannel.name}</Text>
+                      <Text style={styles.currentChannelSubject}>{activeChannel.subject} • {activeChannel.students} students</Text>
+                    </View>
+                  </View>
+                  <Ionicons name="chevron-forward" size={20} color="#6b7280" />
+                </View>
+              </CardContent>
+            </Card>
+          </TouchableOpacity>
         </View>
 
         {/* Search Bar */}
@@ -262,5 +300,52 @@ const styles = StyleSheet.create({
   },
   threadsList: {
     gap: 8,
+  },
+  headerButtons: {
+    flexDirection: 'row',
+    gap: 8,
+  },
+  sampleButton: {
+    backgroundColor: '#3b82f6',
+  },
+  currentChannelCard: {
+    marginBottom: 0,
+  },
+  currentChannelContent: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'space-between',
+  },
+  currentChannelInfo: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    flex: 1,
+  },
+  currentChannelIcon: {
+    width: 40,
+    height: 40,
+    borderRadius: 20,
+    backgroundColor: '#3b82f6',
+    alignItems: 'center',
+    justifyContent: 'center',
+    marginRight: 12,
+  },
+  currentChannelIconText: {
+    color: '#ffffff',
+    fontSize: 16,
+    fontWeight: '700',
+  },
+  currentChannelDetails: {
+    flex: 1,
+  },
+  currentChannelName: {
+    fontSize: 16,
+    fontWeight: '600',
+    color: '#1f2937',
+    marginBottom: 2,
+  },
+  currentChannelSubject: {
+    fontSize: 14,
+    color: '#6b7280',
   },
 });

@@ -1,13 +1,13 @@
 import React from 'react';
-import { TouchableOpacity, Text, StyleSheet, ViewStyle, TextStyle } from 'react-native';
+import { TouchableOpacity, Text, StyleSheet, ViewStyle, TextStyle, StyleProp } from 'react-native';
 
 interface ButtonProps {
   title: string;
   onPress: () => void;
   variant?: 'default' | 'outline' | 'ghost';
   size?: 'sm' | 'md' | 'lg';
-  style?: ViewStyle;
-  textStyle?: TextStyle;
+  style?: StyleProp<ViewStyle>;
+  textStyle?: StyleProp<TextStyle>;
   disabled?: boolean;
 }
 
@@ -20,7 +20,7 @@ export const Button: React.FC<ButtonProps> = ({
   textStyle,
   disabled = false,
 }) => {
-  const buttonStyle = [
+  const buttonStyle: StyleProp<ViewStyle> = [
     styles.button,
     styles[variant],
     styles[size],
@@ -28,7 +28,7 @@ export const Button: React.FC<ButtonProps> = ({
     style,
   ];
 
-  const textStyleCombined = [
+  const textStyleCombined: StyleProp<TextStyle> = [
     styles.text,
     styles[`${variant}Text`],
     styles[`${size}Text`],

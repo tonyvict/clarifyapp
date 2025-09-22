@@ -1,14 +1,13 @@
 import { Channel, ThreadsData, ThreadDetail } from '../types';
 
 export const CHANNELS: Channel[] = [
-  { id: "alg", name: "IGCSE Math – Algebra", subject: "Math", students: 28 },
-  { id: "chem", name: "Sec 4 Chemistry – Acids/Bases", subject: "Chem", students: 22 },
-  { id: "phys", name: "A-Level Physics – Mechanics", subject: "Physics", students: 15 },
-  { id: "bio", name: "IB Biology – Cell Biology", subject: "Biology", students: 18 },
+  { id: "math", name: "IGCSE Mathematics", subject: "Math", students: 32 },
+  { id: "chem", name: "A-Level Chemistry", subject: "Chemistry", students: 24 },
+  { id: "phys", name: "A-Level Physics", subject: "Physics", students: 18 },
 ];
 
 export const THREADS: Record<string, ThreadsData> = {
-  alg: {
+  math: {
     pinned: [
       {
         id: "p1",
