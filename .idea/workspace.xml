@@ -1,11 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
   <component name="ChangeListManager">
-    <list default="true" id="df720c9c-7131-4a07-ba8c-e522a73c0a36" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/components/ui/Button.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/ui/Button.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/data/mockData.ts" beforeDir="false" afterPath="$PROJECT_DIR$/data/mockData.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/screens/HomeScreen.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/screens/HomeScreen.tsx" afterDir="false" />
-    </list>
+    <list default="true" id="df720c9c-7131-4a07-ba8c-e522a73c0a36" name="Changes" comment="feat(channels): add subject-based ChannelSelectionScreen; wire from Home; seed mock data&#10;&#10;Why&#10;- Tutors need a clear entry point to browse classes by subject instead of a mixed feed.&#10;&#10;What&#10;- New screen: ChannelSelectionScreen.tsx&#10;  - Lists subjects → shows associated tutor classes&#10;  - Simple CTA to enter a channel&#10;- HomeScreen.tsx&#10;  - Routes/navigation updated to launch ChannelSelectionScreen&#10;  - Minor UI copy/structure polish&#10;- data/mockData.ts&#10;  - Seeded subjects and channel mappings for demo&#10;&#10;UX&#10;- Clear split by subject before entering a channel&#10;- Reduces cognitive load vs. one big list&#10;&#10;Notes&#10;- Static mock data for now; ready to swap for Firestore collections later.&#10;- No breaking changes." />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -29,6 +28,10 @@
     "RunOnceActivity.git.unshallow": "true",
     "git-widget-placeholder": "main",
     "kotlin-language-version-configured": "true",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
     "vue.rearranger.settings.migration": "true"
   }
 }]]></component>
@@ -49,10 +52,24 @@
       <updated>1758509722190</updated>
       <workItem from="1758509723440" duration="5000" />
       <workItem from="1758511275855" duration="199000" />
+      <workItem from="1758511631888" duration="1910000" />
     </task>
+    <task id="LOCAL-00001" summary="feat(channels): add subject-based ChannelSelectionScreen; wire from Home; seed mock data&#10;&#10;Why&#10;- Tutors need a clear entry point to browse classes by subject instead of a mixed feed.&#10;&#10;What&#10;- New screen: ChannelSelectionScreen.tsx&#10;  - Lists subjects → shows associated tutor classes&#10;  - Simple CTA to enter a channel&#10;- HomeScreen.tsx&#10;  - Routes/navigation updated to launch ChannelSelectionScreen&#10;  - Minor UI copy/structure polish&#10;- data/mockData.ts&#10;  - Seeded subjects and channel mappings for demo&#10;&#10;UX&#10;- Clear split by subject before entering a channel&#10;- Reduces cognitive load vs. one big list&#10;&#10;Notes&#10;- Static mock data for now; ready to swap for Firestore collections later.&#10;- No breaking changes.">
+      <option name="closed" value="true" />
+      <created>1758511643242</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1758511643242</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="feat(channels): add subject-based ChannelSelectionScreen; wire from Home; seed mock data&#10;&#10;Why&#10;- Tutors need a clear entry point to browse classes by subject instead of a mixed feed.&#10;&#10;What&#10;- New screen: ChannelSelectionScreen.tsx&#10;  - Lists subjects → shows associated tutor classes&#10;  - Simple CTA to enter a channel&#10;- HomeScreen.tsx&#10;  - Routes/navigation updated to launch ChannelSelectionScreen&#10;  - Minor UI copy/structure polish&#10;- data/mockData.ts&#10;  - Seeded subjects and channel mappings for demo&#10;&#10;UX&#10;- Clear split by subject before entering a channel&#10;- Reduces cognitive load vs. one big list&#10;&#10;Notes&#10;- Static mock data for now; ready to swap for Firestore collections later.&#10;- No breaking changes." />
+    <option name="LAST_COMMIT_MESSAGE" value="feat(channels): add subject-based ChannelSelectionScreen; wire from Home; seed mock data&#10;&#10;Why&#10;- Tutors need a clear entry point to browse classes by subject instead of a mixed feed.&#10;&#10;What&#10;- New screen: ChannelSelectionScreen.tsx&#10;  - Lists subjects → shows associated tutor classes&#10;  - Simple CTA to enter a channel&#10;- HomeScreen.tsx&#10;  - Routes/navigation updated to launch ChannelSelectionScreen&#10;  - Minor UI copy/structure polish&#10;- data/mockData.ts&#10;  - Seeded subjects and channel mappings for demo&#10;&#10;UX&#10;- Clear split by subject before entering a channel&#10;- Reduces cognitive load vs. one big list&#10;&#10;Notes&#10;- Static mock data for now; ready to swap for Firestore collections later.&#10;- No breaking changes." />
   </component>
 </project>

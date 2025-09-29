@@ -4,7 +4,7 @@ import { TouchableOpacity, Text, StyleSheet, ViewStyle, TextStyle, StyleProp } f
 interface ButtonProps {
   title: string;
   onPress: () => void;
-  variant?: 'default' | 'outline' | 'ghost';
+  variant?: 'default' | 'outline' | 'ghost' | 'text';
   size?: 'sm' | 'md' | 'lg';
   style?: StyleProp<ViewStyle>;
   textStyle?: StyleProp<TextStyle>;
@@ -66,6 +66,9 @@ const styles = StyleSheet.create({
   ghost: {
     backgroundColor: 'transparent',
   },
+  text: {
+    backgroundColor: 'transparent',
+  },
   sm: {
     paddingHorizontal: 12,
     paddingVertical: 8,
@@ -92,6 +95,10 @@ const styles = StyleSheet.create({
   },
   ghostText: {
     color: '#6b7280',
+  },
+  textText: {
+    color: '#1f2937',
+    textDecorationLine: 'underline',
   },
   smText: {
     fontSize: 12,
